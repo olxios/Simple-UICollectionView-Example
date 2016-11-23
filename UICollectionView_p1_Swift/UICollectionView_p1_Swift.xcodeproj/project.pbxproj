@@ -165,6 +165,7 @@
 				TargetAttributes = {
 					4799A0041A1DDE96003EBC14 = {
 						CreatedOnToolsVersion = 6.1;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -321,6 +322,7 @@
 				INFOPLIST_FILE = UICollectionView_p1_Swift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -331,6 +333,7 @@
 				INFOPLIST_FILE = UICollectionView_p1_Swift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

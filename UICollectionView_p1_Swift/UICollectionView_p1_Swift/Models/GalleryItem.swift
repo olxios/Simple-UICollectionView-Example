@@ -16,7 +16,7 @@ class GalleryItem {
         itemImage = dataDictionary["itemImage"]!
     }
     
-    class func newGalleryItem(dataDictionary:Dictionary<String,String>) -> GalleryItem {
+    class func newGalleryItem(_ dataDictionary:Dictionary<String,String>) -> GalleryItem {
         return GalleryItem(dataDictionary: dataDictionary)
     }
     

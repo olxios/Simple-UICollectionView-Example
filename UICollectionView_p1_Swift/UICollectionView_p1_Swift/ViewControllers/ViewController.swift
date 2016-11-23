@@ -23,10 +23,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView.reloadData()
     }
     
-    private func initGalleryItems() {
+    fileprivate func initGalleryItems() {
         
         var items = [GalleryItem]()
-        let inputFile = NSBundle.mainBundle().pathForResource("items", ofType: "plist")
+        let inputFile = Bundle.main.path(forResource: "items", ofType: "plist")
         
         let inputDataArray = NSArray(contentsOfFile: inputFile!)
         
@@ -41,26 +41,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: -
     // MARK: - UICollectionViewDataSource
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return galleryItems.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GalleryItemCollectionViewCell", forIndexPath: indexPath) as! GalleryItemCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GalleryItemCollectionViewCell", for: indexPath) as! GalleryItemCollectionViewCell
         
         cell.setGalleryItem(galleryItems[indexPath.row])
         return cell
         
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let commentView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "GalleryItemCommentView", forIndexPath: indexPath) as! GalleryItemCommentView
+        let commentView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "GalleryItemCommentView", for: indexPath) as! GalleryItemCommentView
         
         commentView.commentLabel.text = "Supplementary view of kind \(kind)"
         
@@ -70,25 +70,25 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: -
     // MARK: - UICollectionViewDelegate
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let alert = UIAlertController(title: "didSelectItemAtIndexPath:", message: "Indexpath = \(indexPath)", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "didSelectItemAtIndexPath:", message: "Indexpath = \(indexPath)", preferredStyle: .alert)
         
-        let alertAction = UIAlertAction(title: "Dismiss", style: .Destructive, handler: nil)
+        let alertAction = UIAlertAction(title: "Dismiss", style: .destructive, handler: nil)
         alert.addAction(alertAction)
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: -
     // MARK: - UICollectionViewFlowLayout
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let picDimension = self.view.frame.size.width / 4.0
-        return CGSizeMake(picDimension, picDimension)
+        return CGSize(width: picDimension, height: picDimension)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let leftRightInset = self.view.frame.size.width / 14.0
         return UIEdgeInsetsMake(0, leftRightInset, 0, leftRightInset)
     }
